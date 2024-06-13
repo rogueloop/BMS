@@ -1,0 +1,62 @@
+;
+; BMS_UPPERFILTER.inf
+;
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = System ; TODO: specify appropriate Class
+ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318} ; TODO: specify appropriate ClassGuid
+Provider    = %ManufacturerName%
+CatalogFile = BMS_UPPERFILTER.cat
+DriverVer   = ; TODO: set DriverVer in stampinf property pages
+PnpLockdown = 1
+
+[DestinationDirs]
+DefaultDestDir = 13
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+BMS_UPPERFILTER.sys  = 1,,
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName% = Standard,NT$ARCH$.10.0...16299 ; %13% support introduced in build 16299
+
+[Standard.NT$ARCH$.10.0...16299]
+%BMS_UPPERFILTER.DeviceDesc% = BMS_UPPERFILTER_Device, Root\BMS_UPPERFILTER ; TODO: edit hw-id
+
+[BMS_UPPERFILTER_Device.NT]
+CopyFiles = File_Copy
+
+[File_Copy]
+BMS_UPPERFILTER.sys
+
+;-------------- Service installation
+[BMS_UPPERFILTER_Device.NT.Services]
+AddService = BMS_UPPERFILTER,%SPSVCINST_ASSOCSERVICE%, BMS_UPPERFILTER_Service_Inst
+
+; -------------- BMS_UPPERFILTER driver install sections
+[BMS_UPPERFILTER_Service_Inst]
+DisplayName    = %BMS_UPPERFILTER.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %13%\BMS_UPPERFILTER.sys
+
+[BMS_UPPERFILTER_Device.NT.Wdf]
+KmdfService = BMS_UPPERFILTER, BMS_UPPERFILTER_wdfsect
+
+[BMS_UPPERFILTER_wdfsect]
+KmdfLibraryVersion = $KMDFVERSION$
+
+[Strings]
+SPSVCINST_ASSOCSERVICE = 0x00000002
+ManufacturerName = "<Your manufacturer name>" ;TODO: Replace with your manufacturer name
+DiskName = "BMS_UPPERFILTER Installation Disk"
+BMS_UPPERFILTER.DeviceDesc = "BMS_UPPERFILTER Device"
+BMS_UPPERFILTER.SVCDESC = "BMS_UPPERFILTER Service"
