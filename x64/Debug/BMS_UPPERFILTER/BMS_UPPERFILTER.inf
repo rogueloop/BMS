@@ -8,19 +8,13 @@ Class       = SoftwareComponent  ;same as oem63
 ClassGuid   = {5c4c3332-344d-483c-8739-259e934c9cc8}   ; copied form oem63 subjected to change
 Provider    = %ManufacturerName% 
 CatalogFile = BMS_UPPERFILTER.cat
-DriverVer   = 12/06/2024,0.0.0.0; TODO: find right way to add this
+DriverVer = 06/14/2024,11.50.10.875
 PnpLockdown = 1
 AddReg = upperfilter_addreg  ; TODO: find right way to add this
 
 [upperfilter_addreg]
 ; append this service to existing REG_MULTI_SZ list, if any
-; HKLM Abbreviation for HKEY_LOCAL_MACHINE
-HKLM,SYSTEM\CurrentControlSet\Control\Class{5c4c3332-344d-483c-8739-259e934c9cc8},UpperFilters,0x00010008,BMS_UPPERFILTER
-;reg-root: Specifies the root key in the registry where the modification will occur.
-;[subkey]: The subkey under the root key where the value will be added or modified.
-;[value-entry-name]: The name of the registry value to be added or modified.
-;[flags]: Flags that specify the type of the value and whether it is a binary value.
-;[value]: The value to be set for the specified registry entry.
+HKLM,SYSTEM\CurrentControlSet\Control\Class{78A1C341-4539-11d3-B88D-00C04FAD5171},UpperFilters,0x00010008,BMS_UPPERFILTER
 
 [DestinationDirs]
 DefaultDestDir = 13
@@ -36,9 +30,9 @@ BMS_UPPERFILTER.sys  = 1,,
 ;*****************************************
 
 [Manufacturer]
-%ManufacturerName% = Standard,NT$ARCH$.10.0...16299 ; %13% support introduced in build 16299
+%ManufacturerName% = Standard,NTamd64.10.0...16299 ; %13% support introduced in build 16299
 
-[Standard.NT$ARCH$.10.0...16299]
+[Standard.NTamd64.10.0...16299]
 %BMS_UPPERFILTER.DeviceDesc% = BMS_UPPERFILTER_Device, Root\BMS_UPPERFILTER ; TODO: edit hw-id
 
 [BMS_UPPERFILTER_Device.NT]
@@ -64,7 +58,7 @@ LoadOrderGroup = “filter”  ;Set the loading priority
 KmdfService = BMS_UPPERFILTER, BMS_UPPERFILTER_wdfsect
 
 [BMS_UPPERFILTER_wdfsect]
-KmdfLibraryVersion = $KMDFVERSION$
+KmdfLibraryVersion = 1.15
 
 [Strings]
 SPSVCINST_ASSOCSERVICE = 0x00000002
@@ -72,6 +66,7 @@ ManufacturerName = "<Your manufacturer name>" ;TODO: Replace with your manufactu
 DiskName = "BMS_UPPERFILTER Installation Disk"
 BMS_UPPERFILTER.DeviceDesc = "BMS_UPPERFILTER Device"
 BMS_UPPERFILTER.SVCDESC = "BMS_UPPERFILTER Service"
+
 
 [FilterSection]
 FilterPosition=Upper

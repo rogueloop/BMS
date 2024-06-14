@@ -1,0 +1,27 @@
+﻿  Building 'BMS_UPPERFILTER' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
+  Stamping x64\Debug\BMS_UPPERFILTER.inf
+  Stamping [Version] section with DriverVer=06/14/2024,11.50.10.875
+C:\Users\HP\source\repos\BMS_UPPERFILTER\BMS_UPPERFILTER.inf(15-15): warning 2083: Section [upperfilter_addreg] not referenced or used.
+C:\Users\HP\source\repos\BMS_UPPERFILTER\BMS_UPPERFILTER.inf(71-71): warning 2083: Section [filtersection] not referenced or used.
+  Driver.c
+  Queue.c
+  Generating Code...
+  BMS_UPPERFILTER.vcxproj -> C:\Users\HP\source\repos\BMS_UPPERFILTER\x64\Debug\BMS_UPPERFILTER.sys
+  Done Adding Additional Store
+  Successfully signed: C:\Users\HP\source\repos\BMS_UPPERFILTER\x64\Debug\BMS_UPPERFILTER.sys
+  
+  Driver is 'Universal'.
+  ........................
+  Signability test complete.
+  
+  Errors:
+  None
+  
+  Warnings:
+  None
+  
+  Catalog generation complete.
+  C:\Users\HP\source\repos\BMS_UPPERFILTER\x64\Debug\BMS_UPPERFILTER\bms_upperfilter.cat
+  Done Adding Additional Store
+  Successfully signed: C:\Users\HP\source\repos\BMS_UPPERFILTER\x64\Debug\BMS_UPPERFILTER\bms_upperfilter.cat
+  
